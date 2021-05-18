@@ -1,1 +1,1 @@
-# nyelvtanulo
+https://szamalkszalezihu-my.sharepoint.com/:w:/g/personal/helyes_marton_diak_szamalk-szalezi_hu/EWkE1OlNOZRMn9S312AVCQMBaFj3udQnpNau3im5gsA0ng?e=76IF13
