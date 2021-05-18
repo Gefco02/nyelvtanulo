@@ -1,0 +1,107 @@
+[
+    {
+        "ID": 1,
+        "magyar": "alma",
+        "angol": "apple",
+        "német": "der Apfel"
+    },
+    {
+        "ID": 2,
+        "magyar": "gitár",
+        "angol": "guitar",
+        "német": "die Gitarre"
+    }, {
+        "ID": 3,
+        "magyar": "csokoládé",
+        "angol": "chocolate",
+        "német": "die Schokolade"
+    }, {
+        "ID": 4,
+        "magyar": "pillangó",
+        "angol": "butterfly",
+        "német": "der Schmetterling"
+    }, {
+        "ID": 5,
+        "magyar": "vakond",
+        "angol": "mole",
+        "német": "der Maulwurf"
+    }, {
+        "ID": 6,
+        "magyar": "levegő",
+        "angol": "air",
+        "német": "die Luft"
+    }, {
+        "ID": 7,
+        "magyar": "föld",
+        "angol": "earth",
+        "német": "die Erde"
+    }, {
+        "ID": 8,
+        "magyar": "víz",
+        "angol": "watter",
+        "német": "das Wasser"
+    }, {
+        "ID": 9,
+        "magyar": "tűz",
+        "angol": "fire",
+        "német": "das Feuer"
+    }, {
+        "ID": 10,
+        "magyar": "sör",
+        "angol": "beer",
+        "német": "das Bier"
+    }, {
+        "ID": 11,
+        "magyar": "kocsi",
+        "angol": "car",
+        "német": "das Auto"
+    }, {
+        "ID": 12,
+        "magyar": "bor",
+        "angol": "wine",
+        "német": "der Wine"
+    }, {
+        "ID": 13,
+        "magyar": "fotó",
+        "angol": "picture",
+        "német": "das Foto"
+    }, {
+        "ID": 14,
+        "magyar": "kutya",
+        "angol": "dog",
+        "német": "der Hund"
+    }, {
+        "ID": 15,
+        "magyar": "cica",
+        "angol": "cat",
+        "német": "die Katze"
+    }, {
+        "ID": 16,
+        "magyar": "nyuszi",
+        "angol": "bunny",
+        "német": "die Hase"
+    }, {
+        "ID": 17,
+        "magyar": "funkció",
+        "angol": "function",
+        "német": "die Funktion"
+    }, {
+        "ID": 18,
+        "magyar": "mentés",
+        "angol": "save",
+        "német": "die Rettung"
+    }, {
+        "ID": 19,
+        "magyar": "kártya",
+        "angol": "card",
+        "német": "das Karte"
+    }, {
+        "ID": 20,
+        "magyar": "futni",
+        "angol": "to run",
+        "német": "laufen"
+    }
+
+
+
+]
