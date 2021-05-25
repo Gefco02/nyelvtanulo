@@ -1,6 +1,5 @@
 var nyelvekTomb;
 var nyelvek = ["Angol", "Német"];
-
 $(function () {
 
 
@@ -9,7 +8,7 @@ $(function () {
                 url: "szavak.json",
                 success: function (result) {
                     nyelvekTomb = result;
-                    megjelenit(nyelvekTomb);
+                    //megjelenit(nyelvekTomb);
                 }
             }
     );
@@ -30,7 +29,7 @@ $(function () {
     }
 
 
-
+    //document.getElementById("result").innerHTML = sessionStorage.getItem("Nyelv");
 });
 
 function megjelenit(nyelvekTomb) {
@@ -108,4 +107,14 @@ function lista() {
     } else {
         formazLe();
     }
+}
+
+
+function feladatBetolt(){
+   var azon = event.srcElement.id;
+   console.log(azon);
+   
+   if (azon === "feladat1"){
+       document.getElementById("article").innerHTML = "Feladat1";
+   }
 }
