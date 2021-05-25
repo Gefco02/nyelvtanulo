@@ -68,18 +68,28 @@ function proba() {
     var x = document.getElementById("select").value;
     console.log("You selected: " + x);
     if (x === "Német") {
-        location.href = 'oldalak/nemet.html';
-    }
-    else if (x==="Angol"){
-        location.href = 'oldalak/angol.html';
+        if (typeof (Storage) !== "undefined") {
+            sessionStorage.setItem("Nyelv", "német");
+            location.href = 'nyelv.html';
+
+        } else {
+            document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+        }
+    } else if (x === "Angol") {
+        if (typeof (Storage) !== "undefined") {
+            sessionStorage.setItem("Nyelv", "angol");
+            location.href = 'nyelv.html';
+
+        } else {
+            document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+        }
     }
 }
-function lista(){
+function lista() {
     var x = document.getElementById("select").value;
     if (x === "Német") {
         nemet();
-    }
-    else if (x==="Angol"){
+    } else if (x === "Angol") {
         angol();
     }
 }
