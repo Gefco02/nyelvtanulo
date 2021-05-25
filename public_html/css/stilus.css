@@ -14,6 +14,36 @@ main{
     text-align: center;
     background: white;
 }
+nav li{
+    background: cornflowerblue;
+    list-style-type: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    border: 1px solid gray;
+}
+
+nav ul{
+    padding:20px
+}
+nav li{
+    text-decoration: none;
+}
+/*nav{
+    margin: 0px;
+    padding: 0px;
+}
+
+nav li {
+    font-size: 20px;
+    list-style-type: none;
+    text-align: left;
+}
+nav ul {
+   border: 1px solid black;
+   
+   background: cornflowerblue;
+}*/
 
 article{
     margin: 30px;
@@ -27,9 +57,7 @@ article p{
     text-align: justify;
     padding: 5px;
 }
-fieldset{
-    margin: auto;
-}
+
 #section{
     height: 300px;
     padding:20px;

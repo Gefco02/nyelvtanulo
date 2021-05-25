@@ -16,7 +16,6 @@ $(function () {
 
 
     listaLetrehozas(nyelvek.length);
-    $("#betolt").click(betolt);
 
     var buttons = document.getElementsByClassName("button");
     for (var b = 0; b < buttons.length; b++)
@@ -46,25 +45,40 @@ function listaLetrehozas(szam) {
     $("section").append('<button class="button" onclick="nemet()" id="nemet"></button><br><br>');
     $("section").append('<label for="nyelv">Válassz egy nyelvet:</label>');
     $("section").append("<select id='select' onchange='lista()'>");
+    $("section select").append("<option>");
     for (var i = 0; i < szam; i++) {
         $("section select").append("<option>");
-        $("section select option").eq(i).append(nyelvek[i]);
+        $("section select option").eq(i+1).append(nyelvek[i]);
     }
     $("section").append("<br>");
 //    $("section").append('<br><input type="button" onclick="ugras() id="betolt" value="Betöltés">');
-    $("section").append('<button class="button" onclick="proba()" id="proba">Betöltés</button>');
+    $("section").append('<button class="button" onclick="betolt()" id="betolt">Betöltés</button>');
 }
 function angol() {
+//    $("#select").value = "Angol";
+//    $("#angol").style.border = "10px solid green";
+//    $("#nemet").style.border = "10px solid red";
     document.getElementById("select").value = "Angol";
     document.getElementById("angol").style.border = "10px solid green";
     document.getElementById("nemet").style.border = "10px solid red";
 }
 function nemet() {
+//    $("#select").value = "Német";
+//    $("#angol").style.border = "10px solid green";
+//    $("#nemet").style.border = "10px solid red";
     document.getElementById("select").value = "Német";
     document.getElementById("nemet").style.border = "10px solid green";
     document.getElementById("angol").style.border = "10px solid red";
 }
-function proba() {
+function formazLe(){
+//    $("#select").value = "";
+//    $("#angol").style.border = "10px solid red";
+//    $("#nemet").style.border = "10px solid red";
+    document.getElementById("select").value = "";
+    document.getElementById("nemet").style.border = "10px solid red";
+    document.getElementById("angol").style.border = "10px solid red";
+}
+function betolt() {
     var x = document.getElementById("select").value;
     console.log("You selected: " + x);
     if (x === "Német") {
@@ -91,9 +105,7 @@ function lista() {
         nemet();
     } else if (x === "Angol") {
         angol();
+    } else {
+        formazLe();
     }
 }
-function betolt() {
-
-}
-;
