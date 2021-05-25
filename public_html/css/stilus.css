@@ -79,3 +79,8 @@ button.button#angol, button.button#nemet
     height:200px;
     margin: 10px; 
   }
+  
+  
+  div{
+    border: 1px solid red;
+  }

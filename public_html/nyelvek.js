@@ -13,7 +13,6 @@ $(function () {
             }
     );
 
-
     listaLetrehozas(nyelvek.length);
 
     var buttons = document.getElementsByClassName("button");
@@ -29,7 +28,7 @@ $(function () {
     }
 
 
-    //document.getElementById("result").innerHTML = sessionStorage.getItem("Nyelv");
+
 });
 
 function megjelenit(nyelvekTomb) {
@@ -47,7 +46,7 @@ function listaLetrehozas(szam) {
     $("section select").append("<option>");
     for (var i = 0; i < szam; i++) {
         $("section select").append("<option>");
-        $("section select option").eq(i+1).append(nyelvek[i]);
+        $("section select option").eq(i + 1).append(nyelvek[i]);
     }
     $("section").append("<br>");
 //    $("section").append('<br><input type="button" onclick="ugras() id="betolt" value="Betöltés">');
@@ -55,21 +54,21 @@ function listaLetrehozas(szam) {
 }
 function angol() {
 //    $("#select").value = "Angol";
-//    $("#angol").style.border = "10px solid green";
+//    $("#angol").css("border", "10px solid green");
 //    $("#nemet").style.border = "10px solid red";
     document.getElementById("select").value = "Angol";
     document.getElementById("angol").style.border = "10px solid green";
     document.getElementById("nemet").style.border = "10px solid red";
 }
 function nemet() {
-//    $("#select").value = "Német";
+//    $("#select").val("Német");
 //    $("#angol").style.border = "10px solid green";
 //    $("#nemet").style.border = "10px solid red";
     document.getElementById("select").value = "Német";
     document.getElementById("nemet").style.border = "10px solid green";
     document.getElementById("angol").style.border = "10px solid red";
 }
-function formazLe(){
+function formazLe() {
 //    $("#select").value = "";
 //    $("#angol").style.border = "10px solid red";
 //    $("#nemet").style.border = "10px solid red";
@@ -110,11 +109,35 @@ function lista() {
 }
 
 
-function feladatBetolt(){
-   var azon = event.srcElement.id;
-   console.log(azon);
-   
-   if (azon === "feladat1"){
-       document.getElementById("article").innerHTML = "Feladat1";
-   }
+function feladatBetolt() {
+    var azon = event.srcElement.id;
+    console.log(azon);
+    var nyelv = sessionStorage.getItem("Nyelv");
+    $("#article").empty();
+    if (azon === "feladat1") {
+        for (var i = 0; i < nyelvekTomb.length; i++) {
+            $("#article").append("<div>");
+            $("#article div").eq(2*i).append(nyelvekTomb[i]["magyar"] + " ");
+            
+            $("#article").append("<div>");
+            $("#article div").eq(2*i+1).append(nyelvekTomb[i][nyelv]);
+        }
+    } else if (azon === "feladat2") {
+        for (var i = 0; i < nyelvekTomb.length; i++) {
+            $("#article").append("<div>");
+            $("#article div").eq(2*i).append(nyelvekTomb[i]["magyar"] + " ");
+            
+            $("#article").append("<div>");
+            $("#article div").eq(2*i+1).append(nyelvekTomb[i][nyelv]);
+        }
+    } else {
+        for (var i = 0; i < nyelvekTomb.length; i++) {
+            $("#article").append("<div>");
+            $("#article div").eq(2*i).append(nyelvekTomb[i]["magyar"] + " ");
+            
+            $("#article").append("<div>");
+            $("#article div").eq(2*i+1).append(nyelvekTomb[i][nyelv]);
+        }
+
+    }
 }
