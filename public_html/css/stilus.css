@@ -16,14 +16,23 @@ main{
 }
 
 article{
-    margin: 20px;
+    margin: 30px;
+    
 }
-
+article h2{
+    text-align:center;
+    
+}
+article p{
+    text-align: justify;
+    padding: 5px;
+}
 fieldset{
     margin: auto;
 }
 #section{
     height: 300px;
+    padding:20px;
 }
 .kepek{
     width: 200px;
@@ -35,3 +44,10 @@ fieldset{
     margin: 20px;
     font-size: 20px;
 }
+button.button#angol, button.button#nemet
+  {
+    border: 10px solid red;
+    width:400px;
+    height:200px;
+    margin: 10px; 
+  }

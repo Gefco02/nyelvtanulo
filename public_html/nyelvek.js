@@ -1,42 +1,89 @@
 var nyelvekTomb;
 var nyelvek = ["Angol", "Német"];
- 
- $(function () {
 
-    
+$(function () {
+
+
     $.ajax(
             {
-                url: "szavak.json", 
+                url: "szavak.json",
                 success: function (result) {
                     nyelvekTomb = result;
-                    //megjelenit(nyelvekTomb);
+                    megjelenit(nyelvekTomb);
                 }
             }
     );
 
-    
+
     listaLetrehozas(nyelvek.length);
     $("#betolt").click(betolt);
-    
-    
+
+    var buttons = document.getElementsByClassName("button");
+    for (var b = 0; b < buttons.length; b++)
+    {
+        if (buttons[b].id === "angol")
+        {
+            buttons[b].style.background = "url('kepek/angol.jpg')";
+        } else if (buttons[b].id === "nemet")
+        {
+            buttons[b].style.background = "url('kepek/german.jpg')";
+        }
+    }
+
+
+
 });
 
-function megjelenit(nyelvekTomb){
+function megjelenit(nyelvekTomb) {
     for (var i = 0; i < nyelvekTomb.length; i++) {
         console.log(nyelvekTomb[i]);
-    } 
-};
-
-function listaLetrehozas(szam){
-    $("section").append('<label for="nyelv">Válassz egy nyelvet:</label>'); 
-    $("section").append("<select>");
-    for (var i = 0; i < szam; i++) {
-       $("section select").append("<option>");
-       $("section select option").eq(i).append(nyelvek[i]);
     }
-    $("section").append('<br><input type="button" id="betolt" value="Betöltés">');
 }
+;
 
-function betolt(){
-    
+function listaLetrehozas(szam) {
+    $("section").append('<button class="button" onclick="angol()" id="angol"></button>');
+    $("section").append('<button class="button" onclick="nemet()" id="nemet"></button><br><br>');
+    $("section").append('<label for="nyelv">Válassz egy nyelvet:</label>');
+    $("section").append("<select id='select' onchange='lista()'>");
+    for (var i = 0; i < szam; i++) {
+        $("section select").append("<option>");
+        $("section select option").eq(i).append(nyelvek[i]);
+    }
+    $("section").append("<br>");
+//    $("section").append('<br><input type="button" onclick="ugras() id="betolt" value="Betöltés">');
+    $("section").append('<button class="button" onclick="proba()" id="proba">Betöltés</button>');
 }
+function angol() {
+    document.getElementById("select").value = "Angol";
+    document.getElementById("angol").style.border = "10px solid green";
+    document.getElementById("nemet").style.border = "10px solid red";
+}
+function nemet() {
+    document.getElementById("select").value = "Német";
+    document.getElementById("nemet").style.border = "10px solid green";
+    document.getElementById("angol").style.border = "10px solid red";
+}
+function proba() {
+    var x = document.getElementById("select").value;
+    console.log("You selected: " + x);
+    if (x === "Német") {
+        location.href = 'oldalak/nemet.html';
+    }
+    else if (x==="Angol"){
+        location.href = 'oldalak/angol.html';
+    }
+}
+function lista(){
+    var x = document.getElementById("select").value;
+    if (x === "Német") {
+        nemet();
+    }
+    else if (x==="Angol"){
+        angol();
+    }
+}
+function betolt() {
+
+}
+;
