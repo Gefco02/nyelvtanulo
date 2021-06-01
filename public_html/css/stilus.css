@@ -47,11 +47,11 @@ nav ul {
 
 article{
     margin: 30px;
-    
+
 }
 article h2{
     text-align:center;
-    
+
 }
 article p{
     text-align: justify;
@@ -73,9 +73,21 @@ article p{
     font-size: 20px;
 }
 button.button#angol, button.button#nemet
-  {
+{
     border: 10px solid red;
     width:400px;
     height:200px;
     margin: 10px; 
-  }
+}
+
+
+
+.tartalom{
+    border: 1px solid gray;
+    padding: 20px;
+    margin: 10px;
+}
+
+#general{
+    text-align: center;
+}
