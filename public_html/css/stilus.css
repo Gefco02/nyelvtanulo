@@ -82,12 +82,8 @@ button.button#angol, button.button#nemet
 
 
 
-.tartalom{
+div{
     border: 1px solid gray;
     padding: 20px;
     margin: 10px;
-}
-
-#general{
-    text-align: center;
 }
