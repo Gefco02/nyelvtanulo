@@ -2,7 +2,6 @@ var nyelvekTomb;
 var nyelvek = ["Angol", "Német"];
 $(function () {
 
-
     $.ajax(
             {
                 url: "szavak.json",
@@ -111,33 +110,52 @@ function lista() {
 
 function feladatBetolt() {
     var azon = event.srcElement.id;
-    console.log(azon);
+    var random = 0;
+    var figyelTomb = [];
+    var szoveg = "";
     var nyelv = sessionStorage.getItem("Nyelv");
+    var db = 0;
     $("#article").empty();
+
     if (azon === "feladat1") {
-        for (var i = 0; i < nyelvekTomb.length; i++) {
-            $("#article").append("<div>");
-            $("#article div").eq(2*i).append(nyelvekTomb[i]["magyar"] + " ");
-            
-            $("#article").append("<div>");
-            $("#article div").eq(2*i+1).append(nyelvekTomb[i][nyelv]);
+        for (var i = 0; db < 6; i++) {
+            random = Math.floor(Math.random() * nyelvekTomb.length);
+            szoveg = nyelvekTomb[random]["magyar"];
+
+            if (!(figyelTomb.includes(szoveg))) {
+                figyelTomb[db] = nyelvekTomb[random]["magyar"];
+                db++;
+            }
         }
+
+
+        for (var i = 0; i < 6; i++) {
+            $("#article").append("<div class='tartalom'>");
+            $("#article div").eq(i).append(figyelTomb[i] + " ");
+        }
+
+
+
+
+
     } else if (azon === "feladat2") {
         for (var i = 0; i < nyelvekTomb.length; i++) {
             $("#article").append("<div>");
-            $("#article div").eq(2*i).append(nyelvekTomb[i]["magyar"] + " ");
-            
+            $("#article div").eq(2 * i).append(nyelvekTomb[i]["magyar"] + " ");
+
             $("#article").append("<div>");
-            $("#article div").eq(2*i+1).append(nyelvekTomb[i][nyelv]);
+            $("#article div").eq(2 * i + 1).append(nyelvekTomb[i][nyelv]);
         }
+
     } else {
         for (var i = 0; i < nyelvekTomb.length; i++) {
             $("#article").append("<div>");
-            $("#article div").eq(2*i).append(nyelvekTomb[i]["magyar"] + " ");
-            
+            $("#article div").eq(2 * i).append(nyelvekTomb[i]["magyar"] + " ");
+
             $("#article").append("<div>");
-            $("#article div").eq(2*i+1).append(nyelvekTomb[i][nyelv]);
+            $("#article div").eq(2 * i + 1).append(nyelvekTomb[i][nyelv]);
         }
 
     }
+
 }
