@@ -17,7 +17,7 @@ $(function () {
 
     listaLetrehozas(nyelvek.length);
 
-    var buttons = document.getElementsByClassName("button");
+    var buttons = $(".button");
     for (var b = 0; b < buttons.length; b++)
     {
         if (buttons[b].id === "angol")
@@ -54,51 +54,41 @@ function listaLetrehozas(szam) {
     $("section").append('<button class="button" onclick="betolt()" id="betolt">Betöltés</button>');
 }
 function angol() {
-//    $("#select").value = "Angol";
-//    $("#angol").css("border", "10px solid green");
-//    $("#nemet").style.border = "10px solid red";
-    document.getElementById("select").value = "Angol";
-    document.getElementById("angol").style.border = "10px solid green";
-    document.getElementById("nemet").style.border = "10px solid red";
+    $("#select").val("Angol");
+    $("#angol").css("border", "10px solid green");
+    $("#nemet").css("border", "10px solid red");
+
 }
 function nemet() {
-//    $("#select").val("Német");
-//    $("#angol").style.border = "10px solid green";
-//    $("#nemet").style.border = "10px solid red";
-    document.getElementById("select").value = "Német";
-    document.getElementById("nemet").style.border = "10px solid green";
-    document.getElementById("angol").style.border = "10px solid red";
+    $("#select").val("Német");
+    $("#angol").css("border", "10px solid red");
+    $("#nemet").css("border", "10px solid green");
+
 }
 function formazLe() {
-//    $("#select").value = "";
-//    $("#angol").style.border = "10px solid red";
-//    $("#nemet").style.border = "10px solid red";
-    document.getElementById("select").value = "";
-    document.getElementById("nemet").style.border = "10px solid red";
-    document.getElementById("angol").style.border = "10px solid red";
+    $("#select").val("");
+    $("#angol").css("border", "10px solid red");
+    $("#nemet").css("border", "10px solid red");
+
 }
 function betolt() {
-    var x = document.getElementById("select").value;
+    var x = $("#select").val();
     if (x === "Német") {
         if (typeof (Storage) !== "undefined") {
             sessionStorage.setItem("Nyelv", "német");
             location.href = 'nyelv.html';
 
-        } else {
-            document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
         }
     } else if (x === "Angol") {
         if (typeof (Storage) !== "undefined") {
             sessionStorage.setItem("Nyelv", "angol");
             location.href = 'nyelv.html';
 
-        } else {
-            document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-        }
+        } 
     }
 }
 function lista() {
-    var x = document.getElementById("select").value;
+    var x = $("#select").val();
     if (x === "Német") {
         nemet();
     } else if (x === "Angol") {
@@ -132,14 +122,16 @@ function feladatBetolt() {
 
         for (var i = 0; i < 6; i++) {
             $("#article").append('<div id='+i+'>');
-            $("#article div").eq(i).append(figyelTomb[i] + " ");
+            $("#article div").eq(i).append(figyelTomb[i] + "");
         }
-        for (var i = 0; i < 6; i++) {
-
-            $("#article div")[i].addEventListener("click", kattint);
-
-            //dblclick
-        }
+        $("#article div").click(kattint);
+//        for (var i = 0; i < 6; i++) {
+//
+////            $("#article div")[i].addEventListener("click", kattint);
+//            
+//
+//            //dblclick
+//        }
 
     } else if (azon === "feladat2") {
         figyelTomb = [];
@@ -181,26 +173,18 @@ function feladatBetolt() {
 }
 function kattint(){
     divid = this.id;
-    divid = divid.toString();
-    var szo = figyelTomb[divid.valueOf()];
+    var szo = $("#article div").eq(divid).text();
     var ellenszo;
-
     for (var i = 0; i < nyelvekTomb.length; i++) {
+
         if (nyelvekTomb[i]["magyar"] === szo) {
             ellenszo = nyelvekTomb[i][nyelv];
-            nyelvekTomb[i][nyelv]=nyelvekTomb[i]["magyar"];
-
+            $("#article div").eq(divid).html(ellenszo);
         }
         else if(nyelvekTomb[i][nyelv] === szo){
 
             ellenszo = nyelvekTomb[i]["magyar"];
-            nyelvekTomb[i]["magyar"]=nyelvekTomb[i][nyelv];
-        }
-    }
-    for (var i = 0; i < 6; i++) {
-        if (divid === i.toString()) {
-
-            document.getElementById(i).innerHTML = ellenszo;
+            $("#article div").eq(divid).html(ellenszo);
         }
     }
 }
