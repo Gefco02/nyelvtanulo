@@ -3,6 +3,11 @@ var nyelvek = ["Angol", "Német"];
 var figyelTomb = [];
 var figyelNyelvTomb = [];
 var nyelv = sessionStorage.getItem("Nyelv");
+
+var szavakTomb = [];
+var dbFeladat3 = 0;
+var index = 0;
+var indexTomb = [];
 $(function () {
 
     $.ajax(
@@ -84,7 +89,7 @@ function betolt() {
             sessionStorage.setItem("Nyelv", "angol");
             location.href = 'nyelv.html';
 
-        } 
+        }
     }
 }
 function lista() {
@@ -121,7 +126,7 @@ function feladatBetolt() {
         }
 
         for (var i = 0; i < 6; i++) {
-            $("#article").append('<div id='+i+'>');
+            $("#article").append('<div id=' + i + '>');
             $("#article div").eq(i).append(figyelTomb[i] + "");
         }
         $("#article div").click(kattint);
@@ -160,18 +165,66 @@ function feladatBetolt() {
 
 
     } else if (azon === "feladat3") {
-        for (var i = 0; i < nyelvekTomb.length; i++) {
-            $("#article").append("<div>");
-            $("#article div").eq(2 * i).append(nyelvekTomb[i]["magyar"] + " ");
+        szavakTomb = [];
+        dbFeladat3 = 1;
 
-            $("#article").append("<div>");
-            $("#article div").eq(2 * i + 1).append(nyelvekTomb[i][nyelv]);
+        for (var i = 0; i < 10; i++) {
+
+            $("#article").append('<div id=' + i + '>');
         }
 
-    }
+        var randomNyelv = Math.floor(Math.random() * nyelvekTomb.length);
+        szoveg = nyelvekTomb[randomNyelv]["magyar"];
+        $("#article div").eq(4).html(szoveg);
+        szavakTomb[0] = nyelvekTomb[randomNyelv][nyelv];
 
+        for (var i = 0; dbFeladat3 < 5; i++) {
+            randomNyelv = Math.floor(Math.random() * nyelvekTomb.length);
+            szoveg = nyelvekTomb[randomNyelv][nyelv];
+            if (!(szavakTomb.includes(szoveg))) {
+                szavakTomb[dbFeladat3] = nyelvekTomb[randomNyelv][nyelv];
+                dbFeladat3++;
+            }
+        }
+
+        index = 0;
+        indexTomb = [];
+
+
+        db = 0;
+        for (var i = 0; db < 5; i++) {
+
+            index = Math.floor(Math.random() * szavakTomb.length);
+
+            if ((indexTomb.includes(index))) {
+
+            } else {
+                indexTomb[indexTomb.length] = index;
+                $("#article div").eq(db * 2 + 1).html(szavakTomb[index]);
+                db++;
+            }
+        }
+        
+        $("#article div").click(kivalasztott);
+    }
 }
-function kattint(){
+function kivalasztott() {
+    divid = this.id;
+    var szo = $("#article div").eq(divid).text();
+    var magyarSzo = $("#article div").eq(4).text();
+    if (divid % 2 === 1) {
+        for (var i = 0; i < nyelvekTomb.length; i++) {
+            if (nyelvekTomb[i]["magyar"] === magyarSzo) {
+                if (nyelvekTomb[i][nyelv] === szo) {
+                    $("#article div").eq(divid).css("border", "10px solid green");
+                } else {
+                    $("#article div").eq(divid).css("border", "10px solid red");
+                }
+            }
+        }
+    }
+}
+function kattint() {
     divid = this.id;
     var szo = $("#article div").eq(divid).text();
     var ellenszo;
@@ -180,8 +233,7 @@ function kattint(){
         if (nyelvekTomb[i]["magyar"] === szo) {
             ellenszo = nyelvekTomb[i][nyelv];
             $("#article div").eq(divid).html(ellenszo);
-        }
-        else if(nyelvekTomb[i][nyelv] === szo){
+        } else if (nyelvekTomb[i][nyelv] === szo) {
 
             ellenszo = nyelvekTomb[i]["magyar"];
             $("#article div").eq(divid).html(ellenszo);
@@ -212,6 +264,6 @@ function ellenorzes() {
         }
     }
     console.log(jomegoldas);
-    alert("Jó megoldások: "+jomegoldas);
+    alert("Jó megoldások: " + jomegoldas);
 
 }
